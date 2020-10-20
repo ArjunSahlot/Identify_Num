@@ -1,11 +1,11 @@
 import pygame, os
-from constants import *
+from Identify_Num.constants import *
 
 
 # Window Management
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (screen_width//2-WIDTH//2, screen_height//2-HEIGHT//2)
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Identify_Num, By: ArjunSahlot")
+pygame.display.set_caption("Identify Num, By: Arjun Sahlot")
 
 
 def draw_window(win):
