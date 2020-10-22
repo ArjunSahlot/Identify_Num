@@ -1,6 +1,8 @@
 import tkinter as tk
 
-WIDTH, HEIGHT = 900, 600
+WIDTH = 896
+
+RESOLUTION = 28
 
 FPS = 90
 
