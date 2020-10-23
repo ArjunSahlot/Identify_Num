@@ -1,4 +1,7 @@
 import tkinter as tk
+import os
+
+PARENT = os.path.dirname(__file__)
 
 WIDTH = 896
 
