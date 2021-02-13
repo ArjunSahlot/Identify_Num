@@ -55,7 +55,7 @@ def main(win, width):
     canvas = create_canvas(res)
     pygame.mouse.set_visible(False)
     radius = 30
-    
+
     run = True
     while run:
         clock.tick(FPS)
