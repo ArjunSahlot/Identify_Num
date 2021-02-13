@@ -1,5 +1,5 @@
-from tkinter import messagebox
-
+from tkinter import messagebox, Tk
+Tk().withdraw()
 import pygame
 import tensorflow as tf
 
