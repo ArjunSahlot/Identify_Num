@@ -17,18 +17,18 @@ class Cell:
         self.color = ((-self.value + 1)*255, )*3
 
     def fill(self, radius, x, y):
-        dist = (abs(self.x + self.width/2 - x)**2 + abs(self.y + self.width/2 - y)**2)**0.5
-        if dist <= radius:
-            dist = -dist + radius
+        dist = (abs(self.x + self.width/2 - x)**2 + abs(self.y + self.width/2 - y)**2)
+        if dist <= radius**2:
+            dist = -dist**0.5 + radius
             self.value += (dist / (radius*5)) * self.vel
 
         self.value = min(1, self.value)
         self._col_from_val()
 
     def erase(self, radius, x, y):
-        dist = (abs(self.x + self.width / 2 - x) ** 2 + abs(self.y + self.width / 2 - y) ** 2) ** 0.5
-        if dist <= radius:
-            dist = -dist + radius
+        dist = (abs(self.x + self.width / 2 - x) ** 2 + abs(self.y + self.width / 2 - y) ** 2)
+        if dist <= radius**2:
+            dist = -dist**0.5 + radius
             self.value -= (dist / (radius*5)) * self.vel
 
         self.value = max(0, self.value)

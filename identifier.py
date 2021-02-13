@@ -5,8 +5,9 @@ import numpy as np
 
 
 if not os.path.isfile(os.path.join(PARENT, "model.h5")):
-    data = tf.keras.datasets.mnist
-    (training_data, training_labels), (test_data, test_labels) = data.load_data()
+    mnist = tf.keras.datasets.mnist
+    (x_train, y_train), (x_test, y_test) = mnist.load_data()
+    x_train, x_test = x_train / 255.0, x_test / 255.0
 
     model = tf.keras.models.Sequential([
         tf.keras.layers.Flatten(input_shape=(28, 28)),
@@ -18,7 +19,7 @@ if not os.path.isfile(os.path.join(PARENT, "model.h5")):
 
     model.compile("adam", tf.keras.losses.SparseCategoricalCrossentropy(True), ["accuracy"])
 
-    model.fit(training_data, training_labels, 10, 5)
+    model.fit(x_train, y_train, 10, 5)
 
     model.save("model.h5")
 
@@ -28,7 +29,7 @@ else:
 
 def get_num(values):
     if np.sum(values) > 0:
-        prediction = model.predict(values)
+        prediction = tf.nn.softmax(model(values))
         return np.argmax(prediction)
     else:
         return "None"
