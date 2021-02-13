@@ -77,8 +77,7 @@ def main(win, width):
                     radius = min(radius, 600)
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    messagebox.showinfo("Prediction", f"The computer predicted {get_num(get_vals(canvas))}")
+                messagebox.showinfo("Prediction", f"The computer predicted {get_num(get_vals(canvas))}")
 
         pygame.display.update()
 
