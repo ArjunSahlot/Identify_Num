@@ -8,14 +8,15 @@ if not os.path.isfile(os.path.join(PARENT, "model.h5")):
     data = tf.keras.datasets.mnist
     (training_data, training_labels), (test_data, test_labels) = data.load_data()
 
-    model = tf.keras.Sequential([
+    model = tf.keras.models.Sequential([
         tf.keras.layers.Flatten(input_shape=(28, 28)),
-        tf.keras.layers.Dense(128, activation=tf.nn.relu),
-        tf.keras.layers.Dense(128, activation=tf.nn.relu),
-        tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Dense(10)
     ])
 
-    model.compile(tf.optimizers.Adam(), "sparse_categorical_crossentropy", metrics=["accuracy"])
+
+    model.compile("adam", tf.keras.losses.SparseCategoricalCrossentropy(True), ["accuracy"])
 
     model.fit(training_data, training_labels, 10, 5)
 

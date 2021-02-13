@@ -13,13 +13,6 @@ WINDOW = pygame.display.set_mode((WIDTH, WIDTH))
 pygame.display.set_caption("Identify Num")
 
 
-def adjust_res(res):
-    vals = sorted([int(i) for i in range(1, res*2)], key=lambda x: abs(res - x))
-    for val in vals:
-        if WIDTH % val == 0:
-            return val
-
-
 def draw_window(win, canvas):
     win.fill(WHITE)
     for row in canvas:
@@ -51,7 +44,7 @@ def get_vals(canvas):
 
 def main(win, width):
     clock = pygame.time.Clock()
-    res = adjust_res(RESOLUTION)
+    res = RESOLUTION
     canvas = create_canvas(res)
     pygame.mouse.set_visible(False)
     radius = 30
