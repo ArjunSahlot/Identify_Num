@@ -2,13 +2,10 @@ from tkinter import messagebox
 
 import pygame
 import tensorflow as tf
-import torch
 
 from cell import Cell
 from constants import *
-from ml.identifier import get_num, get_mode
-
-pytorch = get_mode()
+from ml.identifier import get_num
 
 
 # Window Management
@@ -49,7 +46,7 @@ def get_vals(canvas):
         for j in range(len(canvas)):
             values[i].append(canvas[i][j].value)
 
-    return tf.convert_to_tensor([values]) if not pytorch else torch.tensor(values)
+    return tf.convert_to_tensor([values])
 
 
 def main(win, width):
@@ -80,7 +77,6 @@ def main(win, width):
             if event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
-                # exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
                     radius -= 3
