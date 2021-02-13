@@ -4,7 +4,7 @@ import tensorflow as tf
 import numpy as np
 
 
-if not os.path.isfile(os.path.join(PARENT, "ml", "model.h5")):
+if not os.path.isfile(os.path.join(PARENT, "model.h5")):
     data = tf.keras.datasets.mnist
     (training_data, training_labels), (test_data, test_labels) = data.load_data()
 
@@ -22,7 +22,7 @@ if not os.path.isfile(os.path.join(PARENT, "ml", "model.h5")):
     model.save("model.h5")
 
 else:
-    model = tf.keras.models.load_model(os.path.join(PARENT, "ml", "model.h5"))
+    model = tf.keras.models.load_model(os.path.join(PARENT, "model.h5"))
 
 
 def get_num(values):
