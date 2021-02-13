@@ -19,7 +19,7 @@ if not os.path.isfile(os.path.join(PARENT, "model.h5")):
 
     model.compile("adam", tf.keras.losses.SparseCategoricalCrossentropy(True), ["accuracy"])
 
-    model.fit(x_train, y_train, 10, 5)
+    model.fit(x_train, y_train, epochs=5)
 
     model.save("model.h5")
 

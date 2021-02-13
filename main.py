@@ -37,8 +37,7 @@ def get_vals(canvas):
     for i in range(len(canvas)):
         values.append([])
         for j in range(len(canvas)):
-            values[i].append(canvas[i][j].value)
-
+            values[i].append(canvas[j][i].value)
     return tf.convert_to_tensor([values])
 
 
