@@ -4,17 +4,16 @@ import pygame
 import tensorflow as tf
 import torch
 
-from Identify_Num.cell import Cell
-from Identify_Num.constants import *
-from Identify_Num.ml.identifier import get_num, get_mode
+from cell import Cell
+from constants import *
+from ml.identifier import get_num, get_mode
 
 pytorch = get_mode()
 
 
 # Window Management
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (screen_width//2-WIDTH//2, screen_height//2-WIDTH//2)
 WINDOW = pygame.display.set_mode((WIDTH, WIDTH))
-pygame.display.set_caption("Identify Num, By: Arjun Sahlot")
+pygame.display.set_caption("Identify Num")
 
 
 def adjust_res(res):
