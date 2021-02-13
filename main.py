@@ -5,7 +5,7 @@ import tensorflow as tf
 
 from cell import Cell
 from constants import *
-from ml.identifier import get_num
+from identifier import get_num
 
 
 # Window Management

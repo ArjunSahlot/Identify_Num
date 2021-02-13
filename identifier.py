@@ -4,9 +4,6 @@ import tensorflow as tf
 import numpy as np
 
 
-arg = input("What library do you want to use (tensorflow/pytorch): ").lower()
-pytorch = "torch" in arg or "p" in arg or "y" in arg
-
 if not os.path.isfile(os.path.join(PARENT, "ml", "model.h5")):
     data = tf.keras.datasets.mnist
     (training_data, training_labels), (test_data, test_labels) = data.load_data()
@@ -29,18 +26,8 @@ else:
 
 
 def get_num(values):
-    if pytorch:
-        try:
-            return torch.argmax(net(values.view(-1, 28**2))[0])
-        except TypeError:
-            return "None"
+    if np.sum(values) > 0:
+        prediction = model.predict(values)
+        return np.argmax(prediction)
     else:
-        if np.sum(values) > 0:
-            prediction = model.predict(values)
-            return np.argmax(prediction)
-        else:
-            return "None"
-
-
-def get_mode():
-    return pytorch
+        return "None"
