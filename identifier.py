@@ -29,8 +29,7 @@ else:
 
 def get_num(values):
     if np.sum(values) > 0:
-        print(tf.nn.softmax(model.predict(values)))
-        prediction = model.predict(values)
+        prediction = model.predict(values)[0]
         return np.argmax(prediction)
     else:
         return "None"
