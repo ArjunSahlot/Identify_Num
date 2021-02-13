@@ -1,4 +1,4 @@
-from tkinter import messagebox, Tk
+from tkinter import Tk, messagebox
 Tk().withdraw()
 import pygame
 import tensorflow as tf
@@ -49,8 +49,7 @@ def main(win, width):
     pygame.mouse.set_visible(False)
     radius = 30
 
-    run = True
-    while run:
+    while True:
         clock.tick(FPS)
         draw_window(win, canvas)
         pygame.draw.circle(win, BLACK, pygame.mouse.get_pos(), radius, 3)
@@ -68,8 +67,8 @@ def main(win, width):
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.QUIT:
-                run = False
                 pygame.quit()
+                return
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
                     radius -= 3
@@ -82,10 +81,7 @@ def main(win, width):
                 if event.key == pygame.K_SPACE:
                     messagebox.showinfo("Prediction", f"The computer predicted {get_num(get_vals(canvas))}")
 
-        try:
-            pygame.display.update()
-        except pygame.error:
-            pass
+        pygame.display.update()
 
 
 if __name__ == "__main__":
