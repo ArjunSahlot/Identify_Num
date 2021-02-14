@@ -7,15 +7,15 @@ import numpy as np
 if not os.path.isfile(os.path.join(PARENT, "model.h5")):
     mnist = tf.keras.datasets.mnist
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
-    x_train, x_test = x_train / 255.0, x_test / 255.0
+    x_train = tf.keras.utils.normalize(x_train, axis=1)
+    x_test = tf.keras.utils.normalize(x_test, axis=1)
 
     model = tf.keras.models.Sequential([
         tf.keras.layers.Flatten(input_shape=(28, 28)),
-        tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dropout(0.2),
-        tf.keras.layers.Dense(10)
+        tf.keras.layers.Dense(128, activation=tf.nn.relu),
+        tf.keras.layers.Dense(128, activation=tf.nn.relu),
+        tf.keras.layers.Dense(10, activation=tf.nn.softmax)
     ])
-
 
     model.compile("adam", tf.keras.losses.SparseCategoricalCrossentropy(True), ["accuracy"])
 
